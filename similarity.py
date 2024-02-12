@@ -50,14 +50,24 @@ for i in range(len(doc_matrix)):
 # Use cosine_similarity([X], [Y]) to calculate the similarities between 2 vectors only
 # Use cosine_similarity([X, Y, Z]) to calculate the pairwise similarities between multiple vectors
 # --> Add your Python code here
-print("\ncosine similarity between 2 vectors")
+
+#Cosine Similarity between 2 vectors
+# print("\ncosine similarity between 2 vectors")
 output=[]
 for i in range(len(doc_matrix)):
     for j in range(1,len(doc_matrix)-i):
         output.append([i,i+j,cosine_similarity([doc_matrix[i]],[doc_matrix[i+j]])])
-        print(f'DOC{i+1}', [doc_matrix[i]], f'DOC{i+j+1}', [doc_matrix[i + j]], f'cosine similarity:{float(output[len(output)-1][2])}')
-print("\ncosine similarity between multiple vectors")
-print(cosine_similarity(doc_matrix))
+        # print(f'DOC{i+1}', [doc_matrix[i]], f'DOC{i+j+1}', [doc_matrix[i + j]], f'cosine similarity:{float(output[len(output)-1][2])}')
+
+#Cosine Similarity between multiple vectors
+# print("\ncosine similarity between multiple vectors")
+output_multiple=[]
+output_multiple.append([[0,1,2],cosine_similarity([doc_matrix[0],doc_matrix[1],doc_matrix[2]])])
+output_multiple.append([[0,1,3],cosine_similarity([doc_matrix[0],doc_matrix[1],doc_matrix[3]])])
+output_multiple.append([[0,2,3],cosine_similarity([doc_matrix[0],doc_matrix[2],doc_matrix[3]])])
+output_multiple.append([[1,2,3],cosine_similarity([doc_matrix[1],doc_matrix[2],doc_matrix[3]])])
+output_multiple.append(cosine_similarity(doc_matrix))
+# print(cosine_similarity(doc_matrix))
 
 # Print the highest cosine similarity following the information below
 # The most similar documents are: doc1 and doc2 with cosine similarity = x
