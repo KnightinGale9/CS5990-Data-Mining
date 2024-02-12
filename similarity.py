@@ -45,7 +45,7 @@ for doc in doc_list:
     doc_matrix.append(document_term.copy())
 print("Document term matrix: [soccer, favorite, sport, like, one, support, olympic, games]")
 for i in range(len(doc_matrix)):
-    print("DOC", i, doc_matrix[i])
+    print("DOC", i+1, doc_matrix[i])
 # Compare the pairwise cosine similarities and store the highest one
 # Use cosine_similarity([X], [Y]) to calculate the similarities between 2 vectors only
 # Use cosine_similarity([X, Y, Z]) to calculate the pairwise similarities between multiple vectors
@@ -55,7 +55,7 @@ output=[]
 for i in range(len(doc_matrix)):
     for j in range(1,len(doc_matrix)-i):
         output.append([i,i+j,cosine_similarity([doc_matrix[i]],[doc_matrix[i+j]])])
-        print(f'doc{i}', [doc_matrix[i]], f'doc{i+j}', [doc_matrix[i + j]], f'cosine similarity:{float(output[len(output)-1][2])}')
+        print(f'DOC{i+1}', [doc_matrix[i]], f'DOC{i+j+1}', [doc_matrix[i + j]], f'cosine similarity:{float(output[len(output)-1][2])}')
 print("\ncosine similarity between multiple vectors")
 print(cosine_similarity(doc_matrix))
 
@@ -63,4 +63,4 @@ print(cosine_similarity(doc_matrix))
 # The most similar documents are: doc1 and doc2 with cosine similarity = x
 # --> Add your Python code here
 maximum=max(output,key=lambda x:x[2])
-print(f'\nThe most similar documents are: doc{maximum[0]} and doc{maximum[1]} with cosine similarity = {float(maximum[2][0])}.')
+print(f'\nThe most similar documents are: DOC{maximum[0]+1} and DOC{maximum[1]+1} with cosine similarity = {float(maximum[2][0])}.')
