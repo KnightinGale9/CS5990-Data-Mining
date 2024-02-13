@@ -23,6 +23,7 @@ doc_list =[doc1,doc2,doc3,doc4]
 # --> Add your Python code here
 doc_matrix=[]
 for doc in doc_list:
+    doc=doc.replace(',', '')
     word_list=doc.split()
     document_term=[0,0,0,0,0,0,0,0]
     for word in word_list:
@@ -67,7 +68,7 @@ output_multiple.append([[0,1,3],cosine_similarity([doc_matrix[0],doc_matrix[1],d
 output_multiple.append([[0,2,3],cosine_similarity([doc_matrix[0],doc_matrix[2],doc_matrix[3]])])
 output_multiple.append([[1,2,3],cosine_similarity([doc_matrix[1],doc_matrix[2],doc_matrix[3]])])
 output_multiple.append(cosine_similarity(doc_matrix))
-# print(cosine_similarity(doc_matrix))
+print(cosine_similarity(doc_matrix))
 
 # Print the highest cosine similarity following the information below
 # The most similar documents are: doc1 and doc2 with cosine similarity = x
