@@ -26,21 +26,21 @@ for doc in doc_list:
     word_list=doc.split()
     document_term=[0,0,0,0,0,0,0,0]
     for word in word_list:
-        if "soccer" in word.lower():
+        if word.lower()=="soccer":
             document_term[0]= document_term[0]+1
-        if "favorite" in word.lower():
+        if word.lower()=="favorite":
             document_term[1] = document_term[1] + 1
-        if "sport" in word.lower():
+        if word.lower()=="sport":
             document_term[2] = document_term[2] + 1
-        if "like" in word.lower():
+        if word.lower()=="like":
             document_term[3] = document_term[3] + 1
-        if "one" in word.lower():
+        if word.lower()=="one":
             document_term[4] = document_term[4] + 1
-        if "support" in word.lower():
+        if word.lower()=="support":
             document_term[5] = document_term[5] + 1
-        if "olympic" in word.lower():
+        if word.lower()=="olympic":
             document_term[6] = document_term[6] + 1
-        if "games" in word.lower():
+        if word.lower()=="games":
             document_term[7] = document_term[7] + 1
     doc_matrix.append(document_term.copy())
 print("Document term matrix: [soccer, favorite, sport, like, one, support, olympic, games]")
