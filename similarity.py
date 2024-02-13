@@ -61,7 +61,7 @@ for i in range(len(doc_matrix)):
         # print(f'DOC{i+1}', [doc_matrix[i]], f'DOC{i+j+1}', [doc_matrix[i + j]], f'cosine similarity:{float(output[len(output)-1][2])}')
 
 #Cosine Similarity between multiple vectors
-# print("\ncosine similarity between multiple vectors")
+print("\nCosine similarity between multiple vectors")
 output_multiple=[]
 output_multiple.append([[0,1,2],cosine_similarity([doc_matrix[0],doc_matrix[1],doc_matrix[2]])])
 output_multiple.append([[0,1,3],cosine_similarity([doc_matrix[0],doc_matrix[1],doc_matrix[3]])])
