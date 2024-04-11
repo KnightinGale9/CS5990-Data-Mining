@@ -21,7 +21,7 @@ w_values = ['uniform', 'distance']
 
 # reading the training data
 df = pd.read_csv("weather_training.csv", sep=',', header=0)
-X_training = np.array(df.values)[:, 1:-1]
+X_training = np.array(df.values)[:, 1:-1].astype('f')
 train = np.array(df.values)[:, -1].astype('f')
 y_training=[]
 for y in train:
@@ -33,7 +33,7 @@ for y in train:
 # reading the test data
 # hint: to convert values to float while reading them -> np.array(df.values)[:,-1].astype('f')
 df = pd.read_csv("weather_test.csv", sep=',', header=0)
-X_test = np.array(df.values)[:, 1:-1]
+X_test = np.array(df.values)[:, 1:-1].astype('f')
 test = np.array(df.values)[:, -1].astype('f')
 y_test = []
 for y in test:

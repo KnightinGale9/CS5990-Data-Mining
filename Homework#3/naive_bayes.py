@@ -18,7 +18,7 @@ classes = [i for i in range(-22, 40, 6)]
 #--> add your Python code here
 # reading the training data
 df = pd.read_csv("weather_training.csv", sep=',', header=0)
-X_training = np.array(df.values)[:, 1:-1]
+X_training = np.array(df.values)[:, 1:-1].astype('f')
 #update the training class values according to the discretization (11 values only)
 #--> add your Python code here
 train = np.array(df.values)[:, -1].astype('f')
@@ -31,7 +31,7 @@ for y in train:
 #reading the test data
 #--> add your Python code here
 df = pd.read_csv("weather_test.csv", sep=',', header=0)
-X_test = np.array(df.values)[:, 1:-1]
+X_test = np.array(df.values)[:, 1:-1].astype('f')
 #update the test class values according to the discretization (11 values only)
 #--> add your Python code here
 test = np.array(df.values)[:, -1].astype('f')
@@ -52,7 +52,7 @@ clf = clf.fit(X_training, y_training)
 accuracy=0
 for (X_testSample, y_testSample) in zip(X_test, y_test):
     prediction = clf.predict([X_testSample])
-    if ((abs(prediction[0] - y_testSample)) / y_testSample) <= 0.15:
+    if (abs(prediction[0]) - abs(y_testSample)) == 0:
         accuracy += 1
 accuracy=accuracy/len(y_test)
 #print the naive_bayes accuracyy
