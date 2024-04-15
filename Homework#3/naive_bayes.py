@@ -10,15 +10,18 @@
 from sklearn.naive_bayes import GaussianNB
 import pandas as pd
 import numpy as np
+from sklearn.preprocessing import StandardScaler
 
 #11 classes after discretization
 classes = [i for i in range(-22, 40, 6)]
+scaler = StandardScaler()
 
 #reading the training data
 #--> add your Python code here
 # reading the training data
 df = pd.read_csv("weather_training.csv", sep=',', header=0)
 X_training = np.array(df.values)[:, 1:-1].astype('f')
+X_training = scaler.fit_transform(X_training)
 #update the training class values according to the discretization (11 values only)
 #--> add your Python code here
 train = np.array(df.values)[:, -1].astype('f')
@@ -32,6 +35,7 @@ for y in train:
 #--> add your Python code here
 df = pd.read_csv("weather_test.csv", sep=',', header=0)
 X_test = np.array(df.values)[:, 1:-1].astype('f')
+X_test = scaler.transform(X_test)
 #update the test class values according to the discretization (11 values only)
 #--> add your Python code here
 test = np.array(df.values)[:, -1].astype('f')
@@ -52,7 +56,8 @@ clf = clf.fit(X_training, y_training)
 accuracy=0
 for (X_testSample, y_testSample) in zip(X_test, y_test):
     prediction = clf.predict([X_testSample])
-    if (abs(prediction[0]) - abs(y_testSample)) == 0:
+    difference = (abs(prediction - y_testSample)) / y_testSample
+    if difference<=0.15:
         accuracy += 1
 accuracy=accuracy/len(y_test)
 #print the naive_bayes accuracyy

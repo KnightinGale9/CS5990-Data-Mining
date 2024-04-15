@@ -8,6 +8,7 @@
 
 # importing some Python libraries
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.preprocessing import StandardScaler
 import pandas as pd
 import numpy as np
 
@@ -18,10 +19,11 @@ classes = [i for i in range(-22, 40, 6)]
 k_values = [i for i in range(1, 20)]
 p_values = [1, 2]
 w_values = ['uniform', 'distance']
-
+scaler = StandardScaler()
 # reading the training data
 df = pd.read_csv("weather_training.csv", sep=',', header=0)
 X_training = np.array(df.values)[:, 1:-1].astype('f')
+X_training = scaler.fit_transform(X_training)
 train = np.array(df.values)[:, -1].astype('f')
 y_training=[]
 for y in train:
@@ -34,6 +36,7 @@ for y in train:
 # hint: to convert values to float while reading them -> np.array(df.values)[:,-1].astype('f')
 df = pd.read_csv("weather_test.csv", sep=',', header=0)
 X_test = np.array(df.values)[:, 1:-1].astype('f')
+X_test = scaler.transform(X_test)
 test = np.array(df.values)[:, -1].astype('f')
 y_test = []
 for y in test:
@@ -64,7 +67,8 @@ for kV in k_values:
             correct = 0
             for (X_testSample,y_testSample) in zip(X_test,y_test):
                 prediction = clf.predict([X_testSample])
-                if(abs(prediction[0]) - abs(y_testSample))==0:
+                difference = (abs(prediction - y_testSample)) / y_testSample
+                if difference <= 0.15:
                     correct+=1
 
             # check if the calculated accuracy is higher than the previously one calculated. If so, update the highest accuracy and print it together
