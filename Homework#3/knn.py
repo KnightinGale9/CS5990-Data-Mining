@@ -1,9 +1,9 @@
 # -------------------------------------------------------------------------
-# AUTHOR: your name
-# FILENAME: title of the source file
-# SPECIFICATION: description of the program
+# AUTHOR: Zhong Ooi
+# FILENAME: knn.py
+# SPECIFICATION: KNN model calculation on weather data
 # FOR: CS 5990- Assignment #3
-# TIME SPENT: how long it took you to complete the assignment
+# TIME SPENT: 2 hr
 # -----------------------------------------------------------*/
 
 # importing some Python libraries
